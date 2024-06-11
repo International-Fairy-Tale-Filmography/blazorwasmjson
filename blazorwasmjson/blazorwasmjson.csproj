@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\blazorwasmjson.web.Client\blazorwasmjson.web.Client.csproj" />
+    <ProjectReference Include="..\blazorwasmjson.Client\blazorwasmjson.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
   </ItemGroup>
 

@@ -1,5 +1,5 @@
-using blazorwasmjson.web.Client.Pages;
-using blazorwasmjson.web.Components;
+using blazorwasmjson.Client.Pages;
+using blazorwasmjson.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +28,6 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(blazorwasmjson.web.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(blazorwasmjson.Client._Imports).Assembly);
 
 app.Run();
