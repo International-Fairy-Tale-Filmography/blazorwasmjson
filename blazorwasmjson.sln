@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazorwasmjson.web", "blazorwasmjson.web\blazorwasmjson.web\blazorwasmjson.web.csproj", "{9F45C4C6-E681-4120-8ACA-370E7CE67BCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazorwasmjson.web.Client", "blazorwasmjson.web\blazorwasmjson.web.Client\blazorwasmjson.web.Client.csproj", "{55910D29-055A-4191-8236-221F18045F3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F45C4C6-E681-4120-8ACA-370E7CE67BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F45C4C6-E681-4120-8ACA-370E7CE67BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F45C4C6-E681-4120-8ACA-370E7CE67BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F45C4C6-E681-4120-8ACA-370E7CE67BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55910D29-055A-4191-8236-221F18045F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55910D29-055A-4191-8236-221F18045F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55910D29-055A-4191-8236-221F18045F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55910D29-055A-4191-8236-221F18045F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40DB07BE-AAAF-4499-AFF6-230A92F45FFE}
+	EndGlobalSection
+EndGlobal
