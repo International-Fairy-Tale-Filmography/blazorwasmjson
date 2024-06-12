@@ -1,7 +1,64 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@inject HttpClient Http
 
-<h1>Hello, world!</h1>
+<PageTitle>Filmography</PageTitle>
 
-Welcome to your new app.
+<h1>Films</h1>
+
+
+@if (films == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>OtherTitle</th>
+            <th>Color</th>
+            <th>ReleaseYear</th>
+            <th>DurationMinutes</th>
+            <th>Mode</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var film in films)
+        {
+            <tr>
+                <td>@film.Title</td>
+                <td>@film.OtherTitle</td>
+                <td>@film.Color</td>
+                <td>@film.ReleaseYear</td>
+                <td>@film.DurationMinutes</td>
+                <td>@film.Mode</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Film[]? films;
+
+    protected override async Task OnInitializedAsync()
+    {
+        films = await Http.GetFromJsonAsync<Film[]>("sample-data/Films.json");
+    }
+
+    public class Film
+    {
+        public int FilmID { get; set; }
+
+        public string Title { get; set; }
+
+        public string? OtherTitle { get; set; }
+        public string? Color { get; set; }
+        public int? ReleaseYear { get; set; }
+        public int? DurationMinutes { get; set; }
+        public string? Mode { get; set; }
+
+    }
+}
