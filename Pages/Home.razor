@@ -3,104 +3,51 @@
 @inject HttpClient Http
 
 <PageTitle>Filmography</PageTitle>
+<br/><br />
+<MudGrid Justify="Justify.Center">
 
-<h1>Films</h1>
+    <MudItem xs="12" sm="6" lg="3" >
 
-
-<MudTextField T="string" 
-              @bind-Text="SearchTerm"
-              Clearable="true" 
-      
-              Immediate="true"
-              Label="Search Account" 
-              HelperText="Title (for now)" 
-              HelperTextOnFocus="true"
-              Variant="Variant.Text"
-              OnKeyDown="Enter"
-/>
-
-<MudButton Variant="Variant.Filled" Color="Color.Primary"  OnClick="SearchAccountClick">Search</MudButton>
-
-@if (films == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>OtherTitle</th>
-            <th>Color</th>
-            <th>ReleaseYear</th>
-            <th>DurationMinutes</th>
-            <th>Mode</th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach (var film in filteredFilms)
-        {
-            <tr>
-                <td>@film.Title</td>
-                <td>@film.OtherTitle</td>
-                <td>@film.Color</td>
-                <td>@film.ReleaseYear</td>
-                <td>@film.DurationMinutes</td>
-                <td>@film.Mode</td>
-            </tr>
-        }
-        </tbody>
-    </table>
-}
-
-@code {
-    private string SearchTerm;
-    private Film[]? films;
-    private Film[]? filteredFilms;
-
-    protected override async Task OnInitializedAsync()
-    {
-        films = await Http.GetFromJsonAsync<Film[]>("sample-data/Films.json");
-        RefreshList();
-    }
-
-    public class Film
-    {
-        public int FilmID { get; set; }
-
-        public string Title { get; set; }
-
-        public string? OtherTitle { get; set; }
-        public string? Color { get; set; }
-        public int? ReleaseYear { get; set; }
-        public int? DurationMinutes { get; set; }
-        public string? Mode { get; set; }
-
-    }
-
-    public async Task Enter(KeyboardEventArgs e)
-    {
+        <MudCard>
+            <MudCardMedia Image="images/films.jpg" Height="200" />
+            <MudCardContent>
+                <MudText Typo="Typo.h5">Films</MudText>
+                <MudText Typo="Typo.body2">Search the filmography by film details</MudText>
            
-        if (e.Code == "Enter" || e.Code == "NumpadEnter")
-        {
-            RefreshList();
-        }
-    }
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" Href="films">Go</MudButton>
+            </MudCardActions>
+        </MudCard>
 
-    public void RefreshList()
-    {
-        if (!string.IsNullOrEmpty(SearchTerm))
-        {
-            filteredFilms = films.Where(i => i.Title.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase)).ToArray();
-        }
-        else
-        {
-            filteredFilms = films;
-        }
+    </MudItem>
+    <MudItem xs="12" sm="6" lg="3" >
 
+        <MudCard>
+            <MudCardMedia Image="images/actors.jpg" Height="200" />
+            <MudCardContent>
+                <MudText Typo="Typo.h5">Actors</MudText>
+                <MudText Typo="Typo.body2">Search the filmography by Actors in the film</MudText>
+          
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Primary">Go</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+   @*  <MudItem xs="12" sm="6" lg="3" >
 
-
-
-    }
-}
+        <MudCard>
+            <MudCardMedia Image="images/door.jpg" Height="200" />
+            <MudCardContent>
+                <MudText Typo="Typo.h5">Old Paint</MudText>
+                <MudText Typo="Typo.body2">Old paint found on a stone house door.</MudText>
+                <MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem> *@
+</MudGrid>
