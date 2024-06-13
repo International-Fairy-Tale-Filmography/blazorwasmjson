@@ -7,6 +7,20 @@
 <h1>Films</h1>
 
 
+<MudTextField T="string" 
+              @bind-Text="SearchTerm"
+              Clearable="true" 
+      
+              Immediate="true"
+              Label="Search Account" 
+              HelperText="Title (for now)" 
+              HelperTextOnFocus="true"
+              Variant="Variant.Text"
+              OnKeyDown="Enter"
+/>
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary"  OnClick="SearchAccountClick">Search</MudButton>
+
 @if (films == null)
 {
     <p><em>Loading...</em></p>
@@ -25,7 +39,7 @@ else
         </tr>
         </thead>
         <tbody>
-        @foreach (var film in films)
+            @foreach (var film in filteredFilms)
         {
             <tr>
                 <td>@film.Title</td>
@@ -41,11 +55,14 @@ else
 }
 
 @code {
+    private string SearchTerm;
     private Film[]? films;
+    private Film[]? filteredFilms;
 
     protected override async Task OnInitializedAsync()
     {
         films = await Http.GetFromJsonAsync<Film[]>("sample-data/Films.json");
+        RefreshList();
     }
 
     public class Film
@@ -59,6 +76,31 @@ else
         public int? ReleaseYear { get; set; }
         public int? DurationMinutes { get; set; }
         public string? Mode { get; set; }
+
+    }
+
+    public async Task Enter(KeyboardEventArgs e)
+    {
+           
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            RefreshList();
+        }
+    }
+
+    public void RefreshList()
+    {
+        if (!string.IsNullOrEmpty(SearchTerm))
+        {
+            filteredFilms = films.Where(i => i.Title.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase)).ToArray();
+        }
+        else
+        {
+            filteredFilms = films;
+        }
+
+
+
 
     }
 }
