@@ -1,0 +1,3 @@
+[submodule "wwwroot/data"]
+	path = wwwroot/data
+	url = git@github.com:International-Fairy-Tale-Filmography/data-json.git
